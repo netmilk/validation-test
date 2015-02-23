@@ -5,7 +5,7 @@
   before_install:
   - npm install -g dredd
   script: ./validate.sh
-  services:
-  - mongodb
-  before_script:
-  - mongo mydb_test --eval 'db.addUser("test", "test");
+  # services:
+  # - mongodb
+  # before_script:
+  # - mongo mydb_test --eval 'db.addUser("test", "test");
