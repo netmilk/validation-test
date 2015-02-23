@@ -4,7 +4,7 @@ HOST: http://user.flux-q.mtvi.com:80/v1
 # AUTH REST API
 
 This API defines a set of resources that enable developers to register and manage
-brands and their associated apps.
+brands and their associated apps. It further 
 
 | Resources | Description |
 |---|---|
@@ -15,10 +15,11 @@ brands and their associated apps.
 | __[Users](#reference/users)__ | Manage User profiles associated with a BrandApp |
 
 > Note: The above groupings are conceptual from a resources standpoint. The the 
-current API could be refactored to conform to these ideas. I make more notes
-in the context of these resource groups. Given it is hard to understand the 
+current API could be refactored to conform to these ideas. Given it is hard to understand the 
 intent of a number of the endpoints in the current documentation, this is more 
-an example than an authoritative recommendation.
+an example than an authoritative recommendation. I make more notes in the context of these resource groups. 
+
+[Current Documenation](http://user.flux-q.mtvi.com/auth-apidocs/index.htm)
 
 ## Group Brands 
 The Brands API enables you to create and manage brands. 
@@ -79,6 +80,11 @@ The Brands API enables you to create and manage brands.
  
 ## Group Brand Applications
 The BrandApps API enables you to register apps with brands that are in the system.
+
+> Note: From a resource standpoint, there is a brandApp concept and then below an app concept.
+However, my suspicion is these are the same thing. You may want to align this from a 
+URI (resource) standpoint and use /apps in the URI for both of these concepts 
+(or, alternately use /brandApps for both).
 
 ## BrandApp [/brandApp/{appId}]
 
@@ -300,16 +306,16 @@ The BrandApps API enables you to register apps with brands that are in the syste
             }
 
 ## Group Registration
-
+Find options and sign up to use a particular Brand App. When successfully you create 
+a new registration for an application, an access token is immediately provided to
+interact with app APIs.
 
 See [Sessions](#reference/sessions) for more information on retrieving access
-tokens for interacting with APIs.
+tokens for interacting with APIs outside the registration process.
 
-> Note: All of the following could be associated with the same resource using
-the current HTTP verbs in the same way as below like:
-    ```
-    /app/{appId/Registations
-    ```
+
+> Note: All of the following endpoints could be associated with the same resource using
+the current HTTP verbs in the same way as below, e.g., /app/{appId}/registrations
 
 ## Signup Options [/app/{appId}/signupOptions]
 Signup Settings API
