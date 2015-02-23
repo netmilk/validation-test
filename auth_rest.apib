@@ -1,0 +1,435 @@
+FORMAT: 1A
+HOST: http://user.flux-q.mtvi.com:80/v1
+
+# AUTH REST API
+
+This API defines a set of resources that enable developers to register and manage
+brands and their associated apps.
+
+| Resources | Description |
+|---|---|
+| __[Brands](#reference/brands)__ | Register and view Brands |
+| __[BrandApps](#reference/brand-applications)__  | Manage applications for a registered brand |
+
+## Authorization
+Here is some stuff.
+
+* Lists
+* [Links](http://google.com)
+* Tables
+
+s
+
+## Group Brands 
+The Brands API enables you to create and manage brands. 
+
+> You must create a Brand first in order to register brand related applications.
+
+## Create a brand [/brand]
+
+### Create a new brand [POST]
+ 
++ Request (application/json)
+    + Body
+
+            {
+              "name": "my-test-brand",
+              "url": "http://example.com/my-test-brand",
+              "passwordUrl": "http://example.com/my-test-brand/password",
+              "emailVerificationUrl": "http://example.com/my-test-brand/emailVerification",
+              "status": "Inactive"
+            }
+ 
++ Response 201 (application/json; charset=UTF-8)
+
+    + Header
+
+            Location: /brand/my-test-brand
+
+    + Body
+
+            {
+              "name": "my-test-brand",
+              "url": "http://example.com/my-test-brand",
+              "passwordUrl": "http://example.com/my-test-brand/password",
+              "emailVerificationUrl": "http://example.com/my-test-brand/emailVerification",
+              "status": "Inactive",
+              "created": "2015-02-15T14:11:08Z"
+            }
+
+## Brand [/brand/{brandName}]
+
+### Get brand for given brandName [GET]
+
++ Parameters
+    + brandName (required, string, `vh1`) ... Name of the brand to fetch
+    
++ Response 200 (application/json; charset=UTF-8)
+
+    + Body
+    
+            {
+              "name": "vh1",
+              "url": "vh1-q.mtvi.com",
+              "passwordUrl": "http://user.flux-q.mtvi.com/auth/examples/reset_password.html",
+              "emailVerificationUrl": "http://user.flux-q.mtvi.com/auth/examples/email_verification.html",
+              "status": "Active",
+              "created": "2014-11-04T12:13:14Z"
+            }
+ 
+## Group Brand Applications
+The BrandApps API enables you to register apps with brands that are in the system.
+
+## BrandApp [/brandApp/{appId}]
+
+### Get brand's app for given appId [GET]
+
++ Parameters
+    + appId (required, string, `vh1.com`) ... Name of the app to fetch.
+
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+              "id": "vh1.com",
+              "status": "Active",
+              "settings": {
+                "signup": {
+                  "email": {
+                    "enabled": true,
+                    "fields": [
+                      {
+                        "name": "email",
+                        "label": "Email",
+                        "fieldType": "text",
+                        "required": true,
+                        "validator": "^[_\\-]+[\\_\\-]*@[\\\\]+[a-z]{2,4}$",
+                        "validationMessage": "Invalid format of email"
+                      },
+                      {
+                        "name": "password",
+                        "label": "Password",
+                        "fieldType": "text",
+                        "required": true,
+                        "validator": "^[a-zA-Z]\\{3,14}$",
+                        "validationMessage": "Invalid format of password"
+                      },
+                      {
+                        "name": "gender",
+                        "label": "Gender",
+                        "fieldType": "text",
+                        "required": false
+                      }
+                    ],
+                    "links": [
+                      {
+                        "rel": "signup",
+                        "href": "http://user.flux-d.mtvi.com/v1/app/vh1.com/signup"
+                      }
+                    ]
+                  },
+                  "FB": {
+                    "enabled": true,
+                    "fields": [],
+                    "links": [
+                      {
+                        "rel": "facebookSignup",
+                        "href": "http://user.flux-d.mtvi.com/v1/app/vh1.com/facebookSignup"
+                      }
+                    ]
+                  },
+                  "TW": {
+                    "enabled": true,
+                    "fields": [],
+                    "links": [],
+                    "twitterConsumer": {
+                      "consumerKey": "vKg7tgDY4Gt5jt9mNUG6HU0YF",
+                      "consumerSecret": "yYVUnzoijFLK3oVxMQ3ZFuwGZA04PJcTyXR9SrouEwx5QDS0Jk"
+                    },
+                    "twitterCallback": "http://localhost:8082/examples/twitter_signup.html?app=mtv.com"
+                  }
+                }
+              },
+              "created": "2014-12-30T06:07:31Z"
+            }
+            
+    + Schema
+ 
+## Create Brand App [/brandApp]   
+    
+### Create a new app in the brand [POST]
+
++ Request (application/json)
+
+    + Body
+
+            {
+              "id": "my-test-brand.com",
+              "brandName": "my-test-brand",
+              "status": "Inactive",
+              "settings": {
+                "signup": {
+                  "email": {
+                    "enabled": true,
+                    "fields": [
+                      {
+                        "name": "email",
+                        "label": "Email",
+                        "fieldType": "text",
+                        "required": true,
+                        "validator": "^[_\\-]+[\\_\\-]*@[\\\\]+[a-z]{2,4}$",
+                        "validationMessage": "Invalid format of email"
+                      },
+                      {
+                        "name": "password",
+                        "label": "Password",
+                        "fieldType": "text",
+                        "required": true,
+                        "validator": "^[a-zA-Z]\\{3,14}$",
+                        "validationMessage": "Invalid format of password"
+                      },
+                      {
+                        "name": "gender",
+                        "label": "Gender",
+                        "fieldType": "text",
+                        "required": false
+                      }
+                    ],
+                    "links": [
+                      {
+                        "rel": "signup",
+                        "href": "http://user.flux-d.mtvi.com/v1/app/vh1.com/signup"
+                      }
+                    ]
+                  },
+                  "FB": {
+                    "enabled": true,
+                    "fields": [],
+                    "links": [
+                      {
+                        "rel": "facebookSignup",
+                        "href": "http://user.flux-d.mtvi.com/v1/app/vh1.com/facebookSignup"
+                      }
+                    ]
+                  },
+                  "TW": {
+                    "enabled": true,
+                    "fields": [],
+                    "links": [],
+                    "twitterConsumer": {
+                      "consumerKey": "vKg7tgDY4Gt5jt9mNUG6HU0YF",
+                      "consumerSecret": "yYVUnzoijFLK3oVxMQ3ZFuwGZA04PJcTyXR9SrouEwx5QDS0Jk"
+                    },
+                    "twitterCallback": "http://localhost:8082/examples/twitter_signup.html?app=mtv.com"
+                  }
+                }
+              }
+            }
+
++ Response 201 (application/json; charset=UTF-8)
+
+    + Header
+
+            Location: /brandApp/my-test-brand.com
+
+    + Body
+
+            {
+              "id": "my-test-brand.com",
+              "status": "Inactive",
+              "settings": {
+                "signup": {
+                  "email": {
+                    "enabled": true,
+                    "fields": [
+                      {
+                        "name": "email",
+                        "label": "Email",
+                        "fieldType": "text",
+                        "required": true,
+                        "validator": "^[_\\-]+[\\_\\-]*@[\\\\]+[a-z]{2,4}$",
+                        "validationMessage": "Invalid format of email"
+                      },
+                      {
+                        "name": "password",
+                        "label": "Password",
+                        "fieldType": "text",
+                        "required": true,
+                        "validator": "^[a-zA-Z]\\{3,14}$",
+                        "validationMessage": "Invalid format of password"
+                      },
+                      {
+                        "name": "gender",
+                        "label": "Gender",
+                        "fieldType": "text",
+                        "required": false
+                      }
+                    ],
+                    "links": [
+                      {
+                        "rel": "signup",
+                        "href": "http://user.flux-d.mtvi.com/v1/app/vh1.com/signup"
+                      }
+                    ]
+                  },
+                  "FB": {
+                    "enabled": true,
+                    "fields": [],
+                    "links": [
+                      {
+                        "rel": "facebookSignup",
+                        "href": "http://user.flux-d.mtvi.com/v1/app/vh1.com/facebookSignup"
+                      }
+                    ]
+                  },
+                  "TW": {
+                    "enabled": true,
+                    "fields": [],
+                    "links": [],
+                    "twitterConsumer": {
+                      "consumerKey": "vKg7tgDY4Gt5jt9mNUG6HU0YF",
+                      "consumerSecret": "yYVUnzoijFLK3oVxMQ3ZFuwGZA04PJcTyXR9SrouEwx5QDS0Jk"
+                    },
+                    "twitterCallback": "http://localhost:8082/examples/twitter_signup.html?app=mtv.com"
+                  }
+                }
+              },
+              "created": "2015-02-15T14:19:13Z"
+            }
+
+## Signup Options [/app/{appId}/signupOptions]
+Signup Settings API
+
++ Parameters
+    + appId (string, required, `vh1.com`) ... Name of the app to fetch
+
+### Get signup settings for App [GET]
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+              "email": {
+                "enabled": true,
+                "fields": [
+                  {
+                    "name": "email",
+                    "label": "Email",
+                    "fieldType": "text",
+                    "required": true,
+                    "validator": "^[_\\-]+[\\_\\-]*@[\\\\]+[a-z]{2,4}$",
+                    "validationMessage": "Invalid format of email"
+                  },
+                  {
+                    "name": "password",
+                    "label": "Password",
+                    "fieldType": "text",
+                    "required": true,
+                    "validator": "^[a-zA-Z]\\{3,14}$",
+                    "validationMessage": "Invalid format of password"
+                  },
+                  {
+                    "name": "gender",
+                    "label": "Gender",
+                    "fieldType": "text",
+                    "required": false
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "signup",
+                    "href": "http://user.flux-d.mtvi.com/v1/app/vh1.com/signup"
+                  }
+                ]
+              },
+              "FB": {
+                "enabled": true,
+                "fields": [],
+                "links": [
+                  {
+                    "rel": "facebookSignup",
+                    "href": "http://user.flux-d.mtvi.com/v1/app/vh1.com/facebookSignup"
+                  }
+                ]
+              },
+              "TW": {
+                "enabled": true,
+                "fields": [],
+                "links": []
+              }
+            }
+
+## Signup [/app/{appId}/user]
+
++ Parameters
+    + appId (required, string, `vh1.com`) ... Id of the application
+
+### Sign up using email [POST]
+
++ Request (application/json)
+        
+        {
+            "emailAuth": 
+                {   
+                    "email":"a@b.com",
+                    "password":"secret",
+                    "zipCode":"90210", 
+                    "age": 23
+                }
+        }
+
++ Response 201 (application/json)
+
+        {
+          "token": "iq5pbYcIAtdAXEIt4T05PT-joTi_rCbSEW5xY-euUpUDsKztHus7aHO5FroRWOfSfNdfvvo5_FtbLwA2WPnDxNzhziK9EHklIpeidjU8SNMGBdbi_qTETYApUA6ViKqUrUM2J4DvLRPjianRFM-hnxhqT1UvjbQLTPqBsk0cMlC-0tau9GQCnXUIDtLRgVlu",
+          "signUpType": "Create",
+          "emailUnique": true
+        }
+           
+## User Profile [/app/{appId}/user/{authToken}]
+
++ Parameters
+    + appId (required, string, `vh1.com`) ... Id of the application
+    + authToken (required, string, `lIfooHtb_q9zrFm8dKMeuYiU-lZAyi2D0b8zpDsUNc7s4LnQl-6tzSH7Qau6LqgSE71BPVxiQMToFycy_Q9XUZq4lfpPYRNMxlFP5eenhCYm5Sy-vF02bjaczUhjolIELotUPfK8qFT2uuVll6UI_Xzr9eDw5dfnJjrISAaLuCUbXSkwCKgLtUxp1MpxhUwtTTEQpYSvcgncmQbjJbbr57-uRZHq_WzlP9rVHjRV63fI6k1F-Up7WIB6IQ5PjnKI` ) ... Authentication token for user. authToken is generated when you sign up as a user. See [Signup](#reference/signup).
+
+### Get user profile [GET]
+
++ response 200 (application/json)
+
+        {
+          "email": "a@b.com",
+          "brandId": "vh1",
+          "userData": [
+            {
+              "siteId": "vh1.com",
+              "source": "User",
+              "fields": {
+                "email": "a@b.com",
+                "age": 23,
+                "zipCode": "90210"
+              },
+              "created": "2015-02-19T11:09:27Z",
+              "origin": "User"
+            }
+          ]
+        }
+        
+## Delete User Profile [/app/{appId}/user/delete]
+
++ Parameters
+    + appId (required, string, `vh1.com`) ... Id of the application
+    
+### Delete user profile [POST]
+
++ Request (application/json)
+    
+        {
+          "email": "a@b.com",
+        }
+ 
++ Response 200 (application/json)
+    
+        "Number of profiles deleted: com.viacom.auth.infrastructure.DocumentsUpdated@1"
