@@ -406,6 +406,26 @@ Signup Settings API
           "signUpType": "Create",
           "emailUnique": true
         }
+
+### Sign up using facebook [POST]
+
++ Request (application/json)
+    
+        {
+            "fbAuth": 
+                {
+                    "fbId": "123",
+                    "accessToken": "456"
+                }
+        }
+
++ Response 201 (application/json)
+
+        {
+          "token": "iq5pbYcIAtdAXEIt4T05PT-joTi_rCbSEW5xY-euUpUDsKztHus7aHO5FroRWOfSfNdfvvo5_FtbLwA2WPnDxNzhziK9EHklIpeidjU8SNMGBdbi_qTETYApUA6ViKqUrUM2J4DvLRPjianRFM-hnxhqT1UvjbQLTPqBsk0cMlC-0tau9GQCnXUIDtLRgVlu",
+          "signUpType": "Create",
+          "emailUnique": true
+        }
            
 ## User Profile [/app/{appId}/user/{authToken}]
 
