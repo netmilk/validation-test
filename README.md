@@ -1,3 +1,3 @@
 # validation-test
 
-bla
+![](https://travis-ci.org/ap-andrew/validation-test.svg)
