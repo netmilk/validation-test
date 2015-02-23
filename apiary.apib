@@ -315,7 +315,8 @@ tokens for interacting with APIs outside the registration process.
 
 
 > Note: All of the following endpoints could be associated with the same resource using
-the current HTTP verbs in the same way as below, e.g., /app/{appId}/registrations
+the current HTTP verbs in the same way as below, e.g., /app/{appId}/registrations, where
+the GET gives options and the POSTs create registrations.
 
 ## Signup Options [/app/{appId}/signupOptions]
 Signup Settings API
@@ -409,14 +410,40 @@ Signup Settings API
 
 ### Sign up using facebook [POST]
 
+> Note: Not sure if the response below is correct since I have to have facebook
+Oauth token to see how this works in the current documentation. This is in contrast
+to Apiary's documentation and mock server that will let you try out the API without
+the external dependencies.
+
 + Request (application/json)
     
         {
-            "fbAuth": 
-                {
-                    "fbId": "123",
-                    "accessToken": "456"
-                }
+            "fbAuth": {
+                "fbId": "123",
+                "accessToken": "456"
+            }
+        }
+
++ Response 201 (application/json)
+
+        {
+          "token": "iq5pbYcIAtdAXEIt4T05PT-joTi_rCbSEW5xY-euUpUDsKztHus7aHO5FroRWOfSfNdfvvo5_FtbLwA2WPnDxNzhziK9EHklIpeidjU8SNMGBdbi_qTETYApUA6ViKqUrUM2J4DvLRPjianRFM-hnxhqT1UvjbQLTPqBsk0cMlC-0tau9GQCnXUIDtLRgVlu",
+          "signUpType": "Create"
+        }
+ 
+ 
+### Sign up using Twitter [POST]
+
+> Ditto prior comment about signing up with facebook
+
++ Request (application/json)
+    
+        {
+            "twAuth": {
+                "oauthToken":"",
+                "oauthVerifier":"",
+                "email":""
+            }
         }
 
 + Response 201 (application/json)
@@ -426,7 +453,36 @@ Signup Settings API
           "signUpType": "Create",
           "emailUnique": true
         }
-           
+          
+          
+## Group Sessions
+Login to retrieve access tokens that will allow you to interact with and applications APIs.
+
+## Login [/app/{appId}/login]
+Login to an app.
+
++ Parameters
+    + appId (required, string, `vh1.com`) ... Id of the application
+
+### Log in using email [POST]
+
++ Request (application/json)
+    
+        { 
+            "emailCredentials": {
+                "email":"a@b.com",
+                "password":"secret"
+            }
+        }
+
++ Response 200 (application/json)
+
+        {
+            "token": "iq5pbYcIAtdAXEIt4T05PT-joTi_rCbSEW5xY-euUpUDsKztHus7aHO5FroRWOfSfNdfvvo5_FtbLwA2WPnDxNzhziK9EHklIpeidjU8SNMGBdbi_qTETYApUA6ViKqUrUM2J4DvLRPjianRFM-hn9nEWqWl51awSdN3k5Dtf31y6Q9ZIQlWqSL51w6qNdkm"
+        }
+
+## Group Users
+
 ## User Profile [/app/{appId}/user/{authToken}]
 
 + Parameters
