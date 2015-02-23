@@ -481,14 +481,21 @@ Login to an app.
             "token": "iq5pbYcIAtdAXEIt4T05PT-joTi_rCbSEW5xY-euUpUDsKztHus7aHO5FroRWOfSfNdfvvo5_FtbLwA2WPnDxNzhziK9EHklIpeidjU8SNMGBdbi_qTETYApUA6ViKqUrUM2J4DvLRPjianRFM-hn9nEWqWl51awSdN3k5Dtf31y6Q9ZIQlWqSL51w6qNdkm"
         }
 
-### Log in using email [POST]
+### Log in using facebook [POST]
+
+> Note: You can test run this API using the mock-server as is. To try the production
+server version you will first need to access a facebook OAuth access token and use it as the 
+accessToken in the request.
+
+See [Facebook Access Tokens](https://developers.facebook.com/docs/facebook-login/access-tokens) for
+more information.
 
 + Request (application/json)
     
-        { 
-            "emailCredentials": {
-                "email":"a@b.com",
-                "password":"secret"
+        {
+            "fbCredentials": {
+                "fbId":"123, 
+                "accessToken":"456"
             }
         }
 
@@ -498,15 +505,20 @@ Login to an app.
             "token": "iq5pbYcIAtdAXEIt4T05PT-joTi_rCbSEW5xY-euUpUDsKztHus7aHO5FroRWOfSfNdfvvo5_FtbLwA2WPnDxNzhziK9EHklIpeidjU8SNMGBdbi_qTETYApUA6ViKqUrUM2J4DvLRPjianRFM-hn9nEWqWl51awSdN3k5Dtf31y6Q9ZIQlWqSL51w6qNdkm"
         }
 
+### Log in using twitter [POST]
 
-### Log in using facebook [POST]
+> Note: You can test run this API using the mock-server as is. To try the production
+server version you will first need to access a twitter OAuth token and use it as the 
+accessToken in the request.
+
+See [Twitter Access Tokens](https://dev.twitter.com/oauth/overview) for more information.
 
 + Request (application/json)
     
-        {
-            "fbCredentials": {
-                "fbId":"123, 
-                "accessToken":"456"
+        {   
+            "twCredentials": {
+                "oauthToken":"dsfs33rd432",
+                "oauthVerifier":"23d3335dsdad"
             }
         }
 
