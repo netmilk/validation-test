@@ -4,7 +4,7 @@ language: node_js
  - 0.10
  before_install:
  - npm install -g dredd
- script: ./scripts/test
+ script: ./validate.sh
  services:
  - mongodb
  before_script:
