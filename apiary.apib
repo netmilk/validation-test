@@ -481,6 +481,41 @@ Login to an app.
             "token": "iq5pbYcIAtdAXEIt4T05PT-joTi_rCbSEW5xY-euUpUDsKztHus7aHO5FroRWOfSfNdfvvo5_FtbLwA2WPnDxNzhziK9EHklIpeidjU8SNMGBdbi_qTETYApUA6ViKqUrUM2J4DvLRPjianRFM-hn9nEWqWl51awSdN3k5Dtf31y6Q9ZIQlWqSL51w6qNdkm"
         }
 
+### Log in using email [POST]
+
++ Request (application/json)
+    
+        { 
+            "emailCredentials": {
+                "email":"a@b.com",
+                "password":"secret"
+            }
+        }
+
++ Response 200 (application/json)
+
+        {
+            "token": "iq5pbYcIAtdAXEIt4T05PT-joTi_rCbSEW5xY-euUpUDsKztHus7aHO5FroRWOfSfNdfvvo5_FtbLwA2WPnDxNzhziK9EHklIpeidjU8SNMGBdbi_qTETYApUA6ViKqUrUM2J4DvLRPjianRFM-hn9nEWqWl51awSdN3k5Dtf31y6Q9ZIQlWqSL51w6qNdkm"
+        }
+
+
+### Log in using facebook [POST]
+
++ Request (application/json)
+    
+        {
+            "fbCredentials": {
+                "fbId":"123, 
+                "accessToken":"456"
+            }
+        }
+
++ Response 200 (application/json)
+
+        {
+            "token": "iq5pbYcIAtdAXEIt4T05PT-joTi_rCbSEW5xY-euUpUDsKztHus7aHO5FroRWOfSfNdfvvo5_FtbLwA2WPnDxNzhziK9EHklIpeidjU8SNMGBdbi_qTETYApUA6ViKqUrUM2J4DvLRPjianRFM-hn9nEWqWl51awSdN3k5Dtf31y6Q9ZIQlWqSL51w6qNdkm"
+        }
+
 ## Group Users
 
 ## User Profile [/app/{appId}/user/{authToken}]
