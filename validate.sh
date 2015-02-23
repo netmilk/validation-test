@@ -1,0 +1,1 @@
+dredd ./auth_rest.apib http://user.flux-q.mtvi.com:80/v1 --hookfiles=hooks.coffee -r apiary
