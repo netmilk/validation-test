@@ -4,7 +4,10 @@ HOST: http://user.flux-q.mtvi.com:80/v1
 # AUTH REST API
 
 This API defines a set of resources that enable developers to register and manage
-brands and their associated apps. It further 
+brands and their associated apps. The following documentation covers managing these 
+applications and how developers can sign up to use them and manage their own profiles.
+
+## Resource Overview
 
 | Resources | Description |
 |---|---|
@@ -17,9 +20,13 @@ brands and their associated apps. It further
 > Note: The above groupings are conceptual from a resources standpoint. The the 
 current API could be refactored to conform to these ideas. Given it is hard to understand the 
 intent of a number of the endpoints in the current documentation, this is more 
-an example than an authoritative recommendation. I make more notes in the context of these resource groups. 
+an example than an authoritative recommendation. I make more notes in the context of these 
+resource groups. 
 
-[Current Documenation](http://user.flux-q.mtvi.com/auth-apidocs/index.htm)
+## Related Information
+
+* [Current Documentation](http://user.flux-q.mtvi.com/auth-apidocs/index.html)
+* [Viacom](http://www.viacom.com)
 
 ## Group Brands 
 The Brands API enables you to create and manage brands. 
@@ -306,7 +313,7 @@ URI (resource) standpoint and use /apps in the URI for both of these concepts
             }
 
 ## Group Registration
-Find options and sign up to use a particular Brand App. When successfully you create 
+Find options and sign up to use a particular Brand App. When you successfully create 
 a new registration for an application, an access token is immediately provided to
 interact with app APIs.
 
@@ -481,14 +488,21 @@ Login to an app.
             "token": "iq5pbYcIAtdAXEIt4T05PT-joTi_rCbSEW5xY-euUpUDsKztHus7aHO5FroRWOfSfNdfvvo5_FtbLwA2WPnDxNzhziK9EHklIpeidjU8SNMGBdbi_qTETYApUA6ViKqUrUM2J4DvLRPjianRFM-hn9nEWqWl51awSdN3k5Dtf31y6Q9ZIQlWqSL51w6qNdkm"
         }
 
-### Log in using email [POST]
+### Log in using facebook [POST]
+
+> Note: You can test run this API using the mock-server as is. To try the production
+server version you will first need to access a facebook OAuth access token and use it as the 
+accessToken in the request.
+
+See [Facebook Access Tokens](https://developers.facebook.com/docs/facebook-login/access-tokens) for
+more information.
 
 + Request (application/json)
     
-        { 
-            "emailCredentials": {
-                "email":"a@b.com",
-                "password":"secret"
+        {
+            "fbCredentials": {
+                "fbId":"123, 
+                "accessToken":"456"
             }
         }
 
@@ -498,15 +512,20 @@ Login to an app.
             "token": "iq5pbYcIAtdAXEIt4T05PT-joTi_rCbSEW5xY-euUpUDsKztHus7aHO5FroRWOfSfNdfvvo5_FtbLwA2WPnDxNzhziK9EHklIpeidjU8SNMGBdbi_qTETYApUA6ViKqUrUM2J4DvLRPjianRFM-hn9nEWqWl51awSdN3k5Dtf31y6Q9ZIQlWqSL51w6qNdkm"
         }
 
+### Log in using twitter [POST]
 
-### Log in using facebook [POST]
+> Note: You can test run this API using the mock-server as is. To try the production
+server version you will first need to access a twitter OAuth token and use it as the 
+accessToken in the request.
+
+See [Twitter Access Tokens](https://dev.twitter.com/oauth/overview) for more information.
 
 + Request (application/json)
     
-        {
-            "fbCredentials": {
-                "fbId":"123, 
-                "accessToken":"456"
+        {   
+            "twCredentials": {
+                "oauthToken":"dsfs33rd432",
+                "oauthVerifier":"23d3335dsdad"
             }
         }
 
