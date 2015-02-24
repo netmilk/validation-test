@@ -4,7 +4,7 @@
   - 0.10
   before_install:
   - npm install -g dredd
-  script: ./validate.sh
+  script: ./scripts/validate.sh
   # services:
   # - mongodb
   # before_script:
