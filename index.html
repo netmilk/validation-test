@@ -1,13 +1,38 @@
 <html>
 <head>
 	<script src="https://api.apiary.io/seeds/embed.js"></script>
+	
+	  <!-- Inline Styles -->
+  <style>
+    html, body {
+      margin: 0px;
+      padding: 0px;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .myHeader {
+      float: left;
+      width: 100%;
+      height: 150px;
+      background-color: pink;
+      text-align: center;
+    }
+  </style>
+  <!-- /Inline Styles -->
+
+
 </head>
 
 <body>
 
-<script>var embed = new Apiary.Embed({
+<script>
+    var embed = new Apiary.Embed({
+      header: '.myHeader',
   subdomain: 'authrestapi'
-});</script>
+});
+</script>
 
 </body>
 </html>
