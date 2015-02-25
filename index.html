@@ -36,10 +36,28 @@
 <script>
     var embed = new Apiary.Embed({
       header: '.myHeader',
-      theme: {
-        fontFamily: 'Comic Sans MS'
-      }
-      subdomain: 'authrestapi'
+      subdomain: 'authrestapi',
+  customFonts: {
+    families: {
+      name: 'Proxima Nova',
+      style: 'normal',
+      weight: 200,
+      formats: [
+        {
+          format: 'woff',
+          url: 'https://mycdn.com/fonts/proxima-nova/light.woff'
+        },
+        {
+          format: 'truetype',
+          url: 'https://mycdn.com/fonts/proxima-nova/light.ttf'
+        }
+      ]
+    }
+  },
+
+  theme: {
+    fontFamily: 'Open Sans'
+  },
 });
 </script>
 
