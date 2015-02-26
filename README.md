@@ -1,3 +1,3 @@
 # validation-test
 
-![](https://travis-ci.org/ap-andrew/validation-test.svg)
+[![Build Status](https://travis-ci.org/netmilk/validation-test.svg)](https://travis-ci.org/netmilk/validation-test)
