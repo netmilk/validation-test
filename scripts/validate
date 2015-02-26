@@ -1,4 +1,4 @@
 #!/bin/sh
-export APIARY_API_NAME=authrestapi
-export APIARY_API_KEY=6e1775b9c8e08bde3e29a6b70eb969f0
+export APIARY_API_NAME=viaconcidemo
+export APIARY_API_KEY=add0b5027298ac11e76d09ccb2032d49
 dredd apiary.apib http://user.flux-q.mtvi.com:80/v1 -r apiary

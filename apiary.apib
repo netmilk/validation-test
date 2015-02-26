@@ -4,7 +4,7 @@ HOST: http://user.flux-q.mtvi.com:80/v1
 # AUTH REST API
 
 This API defines a set of resources that enable developers to register and manage
-brands and their associated apps. The following documentation covers managing these 
+brands and their associated apps. The following documentation covers managing these
 applications and how developers can sign up to use them and manage their own profiles.
 
 ## Resource Overview
@@ -17,27 +17,28 @@ applications and how developers can sign up to use them and manage their own pro
 | __[Sessions](#reference/sessions)__ | Retrieve Access tokens to interact with APIs |
 | __[Users](#reference/users)__ | Manage User profiles associated with a BrandApp |
 
-> Note: The above groupings are conceptual from a resources standpoint. The the 
-current API could be refactored to conform to these ideas. Given it is hard to understand the 
-intent of a number of the endpoints in the current documentation, this is more 
-an example than an authoritative recommendation. I make more notes in the context of these 
-resource groups. 
+> Note: The above groupings are conceptual from a resources standpoint. The the
+current API could be refactored to conform to these ideas. Given it is hard to understand the
+intent of a number of the endpoints in the current documentation, this is more
+an example than an authoritative recommendation. I make more notes in the context of these
+resource groups.
 
 ## Related Information
 
 * [Current Documentation](http://user.flux-q.mtvi.com/auth-apidocs/index.html)
 * [Viacom](http://www.viacom.com)
 
-## Group Brands 
-The Brands API enables you to create and manage brands. 
+## Group Brands
+The Brands API enables you to create and manage brands.
 
 > You must create a Brand first in order to register brand related applications.
 
 ## Create a brand [/brand]
 
 ### Create a new brand [POST]
- 
+
 + Request (application/json)
+
     + Body
 
             {
@@ -47,13 +48,9 @@ The Brands API enables you to create and manage brands.
               "emailVerificationUrl": "http://example.com/my-test-brand/emailVerification",
               "status": "Inactive"
             }
- 
+
 + Response 201 (application/json; charset=UTF-8)
-
-    + Header
-
-            Location: /brand/my-test-brand
-
+s
     + Body
 
             {
@@ -71,11 +68,11 @@ The Brands API enables you to create and manage brands.
 
 + Parameters
     + brandName (required, string, `vh1`) ... Name of the brand to fetch
-    
+
 + Response 200 (application/json; charset=UTF-8)
 
     + Body
-    
+
             {
               "name": "vh1",
               "url": "vh1-q.mtvi.com",
@@ -84,13 +81,13 @@ The Brands API enables you to create and manage brands.
               "status": "Active",
               "created": "2014-11-04T12:13:14Z"
             }
- 
+
 ## Group Brand Applications
 The BrandApps API enables you to register apps with brands that are in the system.
 
 > Note: From a resource standpoint, there is a brandApp concept and then below an app concept.
-However, my suspicion is these are the same thing. You may want to align this from a 
-URI (resource) standpoint and use /apps in the URI for both of these concepts 
+However, my suspicion is these are the same thing. You may want to align this from a
+URI (resource) standpoint and use /apps in the URI for both of these concepts
 (or, alternately use /brandApps for both).
 
 ## BrandApp [/brandApp/{appId}]
@@ -104,7 +101,7 @@ URI (resource) standpoint and use /apps in the URI for both of these concepts
 + Response 200 (application/json)
 
     + Body
-    
+
             {
               "id": "vh1.com",
               "status": "Active",
@@ -167,11 +164,11 @@ URI (resource) standpoint and use /apps in the URI for both of these concepts
               },
               "created": "2014-12-30T06:07:31Z"
             }
-            
+
     + Schema
- 
-## Create Brand App [/brandApp]   
-    
+
+## Create Brand App [/brandApp]
+
 ### Create a new app in the brand [POST]
 
 + Request (application/json)
@@ -313,7 +310,7 @@ URI (resource) standpoint and use /apps in the URI for both of these concepts
             }
 
 ## Group Registration
-Find options and sign up to use a particular Brand App. When you successfully create 
+Find options and sign up to use a particular Brand App. When you successfully create
 a new registration for an application, an access token is immediately provided to
 interact with app APIs.
 
@@ -333,10 +330,10 @@ Signup Settings API
 
 ### Get signup settings for App [GET]
 
-+ Response 200 (application/json)
++ Response 200 (application/json; charset=UTF-8)
 
     + Body
-    
+
             {
               "email": {
                 "enabled": true,
@@ -396,18 +393,18 @@ Signup Settings API
 ### Sign up using email [POST]
 
 + Request (application/json)
-        
+
         {
-            "emailAuth": 
-                {   
+            "emailAuth":
+                {
                     "email":"a@b.com",
                     "password":"secret",
-                    "zipCode":"90210", 
+                    "zipCode":"90210",
                     "age": 23
                 }
         }
 
-+ Response 201 (application/json)
++ Response 201 (application/json; charset=UTF-8)
 
         {
           "token": "iq5pbYcIAtdAXEIt4T05PT-joTi_rCbSEW5xY-euUpUDsKztHus7aHO5FroRWOfSfNdfvvo5_FtbLwA2WPnDxNzhziK9EHklIpeidjU8SNMGBdbi_qTETYApUA6ViKqUrUM2J4DvLRPjianRFM-hnxhqT1UvjbQLTPqBsk0cMlC-0tau9GQCnXUIDtLRgVlu",
@@ -423,7 +420,7 @@ to Apiary's documentation and mock server that will let you try out the API with
 the external dependencies.
 
 + Request (application/json)
-    
+
         {
             "fbAuth": {
                 "fbId": "123",
@@ -431,20 +428,20 @@ the external dependencies.
             }
         }
 
-+ Response 201 (application/json)
++ Response 201 (application/json; charset=UTF-8)
 
         {
           "token": "iq5pbYcIAtdAXEIt4T05PT-joTi_rCbSEW5xY-euUpUDsKztHus7aHO5FroRWOfSfNdfvvo5_FtbLwA2WPnDxNzhziK9EHklIpeidjU8SNMGBdbi_qTETYApUA6ViKqUrUM2J4DvLRPjianRFM-hnxhqT1UvjbQLTPqBsk0cMlC-0tau9GQCnXUIDtLRgVlu",
           "signUpType": "Create"
         }
- 
- 
+
+
 ### Sign up using Twitter [POST]
 
 > Ditto prior comment about signing up with facebook
 
 + Request (application/json)
-    
+
         {
             "twAuth": {
                 "oauthToken":"",
@@ -453,15 +450,15 @@ the external dependencies.
             }
         }
 
-+ Response 201 (application/json)
++ Response 201 (application/json; charset=UTF-8)
 
         {
           "token": "iq5pbYcIAtdAXEIt4T05PT-joTi_rCbSEW5xY-euUpUDsKztHus7aHO5FroRWOfSfNdfvvo5_FtbLwA2WPnDxNzhziK9EHklIpeidjU8SNMGBdbi_qTETYApUA6ViKqUrUM2J4DvLRPjianRFM-hnxhqT1UvjbQLTPqBsk0cMlC-0tau9GQCnXUIDtLRgVlu",
           "signUpType": "Create",
           "emailUnique": true
         }
-          
-          
+
+
 ## Group Sessions
 Login to retrieve access tokens that will allow you to interact with and applications APIs.
 
@@ -474,15 +471,15 @@ Login to an app.
 ### Log in using email [POST]
 
 + Request (application/json)
-    
-        { 
+
+        {
             "emailCredentials": {
                 "email":"a@b.com",
                 "password":"secret"
             }
         }
 
-+ Response 200 (application/json)
++ Response 200 (application/json; charset=UTF-8)
 
         {
             "token": "iq5pbYcIAtdAXEIt4T05PT-joTi_rCbSEW5xY-euUpUDsKztHus7aHO5FroRWOfSfNdfvvo5_FtbLwA2WPnDxNzhziK9EHklIpeidjU8SNMGBdbi_qTETYApUA6ViKqUrUM2J4DvLRPjianRFM-hn9nEWqWl51awSdN3k5Dtf31y6Q9ZIQlWqSL51w6qNdkm"
@@ -491,22 +488,22 @@ Login to an app.
 ### Log in using facebook [POST]
 
 > Note: You can test run this API using the mock-server as is. To try the production
-server version you will first need to access a facebook OAuth access token and use it as the 
+server version you will first need to access a facebook OAuth access token and use it as the
 accessToken in the request.
 
 See [Facebook Access Tokens](https://developers.facebook.com/docs/facebook-login/access-tokens) for
 more information.
 
 + Request (application/json)
-    
+
         {
             "fbCredentials": {
-                "fbId":"123, 
+                "fbId":"123,
                 "accessToken":"456"
             }
         }
 
-+ Response 200 (application/json)
++ Response 200 (application/json; charset=UTF-8)
 
         {
             "token": "iq5pbYcIAtdAXEIt4T05PT-joTi_rCbSEW5xY-euUpUDsKztHus7aHO5FroRWOfSfNdfvvo5_FtbLwA2WPnDxNzhziK9EHklIpeidjU8SNMGBdbi_qTETYApUA6ViKqUrUM2J4DvLRPjianRFM-hn9nEWqWl51awSdN3k5Dtf31y6Q9ZIQlWqSL51w6qNdkm"
@@ -515,21 +512,21 @@ more information.
 ### Log in using twitter [POST]
 
 > Note: You can test run this API using the mock-server as is. To try the production
-server version you will first need to access a twitter OAuth token and use it as the 
+server version you will first need to access a twitter OAuth token and use it as the
 oauthToken and associated oauthVerifier in the request.
 
 See [Twitter Access Tokens](https://dev.twitter.com/oauth/overview) for more information.
 
 + Request (application/json)
-    
-        {   
+
+        {
             "twCredentials": {
                 "oauthToken":"dsfs33rd432",
                 "oauthVerifier":"23d3335dsdad"
             }
         }
 
-+ Response 200 (application/json)
++ Response 200 (application/json; charset=UTF-8)
 
         {
             "token": "iq5pbYcIAtdAXEIt4T05PT-joTi_rCbSEW5xY-euUpUDsKztHus7aHO5FroRWOfSfNdfvvo5_FtbLwA2WPnDxNzhziK9EHklIpeidjU8SNMGBdbi_qTETYApUA6ViKqUrUM2J4DvLRPjianRFM-hn9nEWqWl51awSdN3k5Dtf31y6Q9ZIQlWqSL51w6qNdkm"
@@ -545,7 +542,7 @@ See [Twitter Access Tokens](https://dev.twitter.com/oauth/overview) for more inf
 
 ### Get user profile [GET]
 
-+ response 200 (application/json)
++ response 200 (application/json; charset=UTF-8)
 
         {
           "email": "a@b.com",
@@ -564,20 +561,20 @@ See [Twitter Access Tokens](https://dev.twitter.com/oauth/overview) for more inf
             }
           ]
         }
-        
+
 ## Delete User Profile [/app/{appId}/user/delete]
 
 + Parameters
     + appId (required, string, `vh1.com`) ... Id of the application
-    
+
 ### Delete user profile [POST]
 
 + Request (application/json)
-    
+
         {
           "email": "a@b.com",
         }
- 
-+ Response 200 (application/json)
-    
+
++ Response 200 (application/json; charset=UTF-8s)
+
         "Number of profiles deleted: com.viacom.auth.infrastructure.DocumentsUpdated@1"
