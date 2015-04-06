@@ -3,7 +3,7 @@
 ### Brands > Create a brand > Create a new brand
   - Response does not include `location` header
   - Response bode contains JSON error saying that entity already exits
-  - It can be delete first in `before` hook via API or via interaction with fixtures on the database level
+  - It can be deleted first in `before` hook via API or via interaction with fixtures on the database level
 
 ### Brands > Brand > Get brand for given brandName
   - Is valid against blueprint
